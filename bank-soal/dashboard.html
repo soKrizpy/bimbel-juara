@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bimbel Juara CBT - Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="app-page">
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="brand-block">
+          <p class="auth-kicker">Bimbel Juara</p>
+          <h1>CBT Bank Soal</h1>
+          <span id="sidebar-role" class="role-pill">loading</span>
+        </div>
+
+        <nav id="sidebar-nav" class="sidebar-nav"></nav>
+
+        <div class="sidebar-footer">
+          <div>
+            <p class="sidebar-label">Pengguna aktif</p>
+            <p id="sidebar-user" class="sidebar-value">-</p>
+          </div>
+          <button id="logout-button" class="btn btn-ghost w-full">Logout</button>
+        </div>
+      </aside>
+
+      <main class="main-area">
+        <header class="topbar">
+          <div>
+            <p id="page-eyebrow" class="page-eyebrow">Dashboard</p>
+            <h2 id="page-title" class="page-title">Memuat...</h2>
+            <p id="page-description" class="page-description"></p>
+          </div>
+          <div class="topbar-meta">
+            <span id="topbar-role" class="role-pill">loading</span>
+            <span id="topbar-user" class="user-chip">-</span>
+          </div>
+        </header>
+
+        <section id="alert-area"></section>
+        <section id="stats-container" class="stats-grid"></section>
+        <section id="content" class="content-area"></section>
+      </main>
+    </div>
+
+    <div id="modal" class="modal" aria-hidden="true">
+      <div id="modal-content" class="modal-card"></div>
+    </div>
+
+    <div id="toast-stack" class="toast-stack"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="config.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

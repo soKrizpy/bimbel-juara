@@ -1,0 +1,4 @@
+// Ganti dengan data dari dashboard Supabase Anda
+const SUPABASE_URL = "https://hokwluhhqyrbiwbtzrpq.supabase.co";
+const SUPABASE_ANON_KEY =
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imhva3dsdWhocXlyYml3YnR6cnBxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODYxNjkzMzgsImV4cCI6MjEwMTc0NTMzOH0.swVN9_DOp0US350fbvUS02ZhRl2TQWlm6t0zlFbMF5U";

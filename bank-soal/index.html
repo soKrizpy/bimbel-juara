@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bimbel Juara CBT - Login</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="auth-page">
+    <div class="auth-backdrop"></div>
+    <main class="auth-shell">
+      <section class="auth-card">
+        <div class="auth-brand">
+          <div>
+            <p class="auth-kicker">Bimbel Juara</p>
+            <h1>CBT Bank Soal</h1>
+          </div>
+          <span class="auth-badge">Multi-role</span>
+        </div>
+
+        <p class="auth-copy">
+          Login untuk admin, superadmin, dan student. Sistem ini dibuat agar
+          pengelolaan paket soal, assignment, dan hasil ujian lebih rapi.
+        </p>
+
+        <form id="login-form" class="auth-form">
+          <label>
+            <span>Email</span>
+            <input
+              type="email"
+              id="email"
+              placeholder="nama@siswa.com"
+              autocomplete="email"
+              required
+            />
+          </label>
+
+          <label>
+            <span>Password</span>
+            <input
+              type="password"
+              id="password"
+              placeholder="Masukkan password"
+              autocomplete="current-password"
+              required
+            />
+          </label>
+
+          <button type="submit" class="btn btn-primary">
+            Masuk ke Dashboard
+          </button>
+        </form>
+
+        <div id="login-message" class="auth-message"></div>
+
+        <div class="auth-note">
+          <strong>Catatan:</strong> username disimpan di profil, tetapi login
+          tetap menggunakan email/password Supabase Auth.
+        </div>
+      </section>
+
+      <aside class="auth-panel">
+        <div class="panel-card">
+          <h2>Alur kerja</h2>
+          <ol>
+            <li>Superadmin membuat admin dan student.</li>
+            <li>Admin membuat paket, soal, lalu assign ke siswa atau kelas.</li>
+            <li>Student login, mengerjakan soal, dan melihat skor + pembahasan.</li>
+          </ol>
+        </div>
+        <div class="panel-card panel-highlight">
+          <h2>Versi awal</h2>
+          <p>Fokus saat ini: pilihan ganda, CSV import, timer, dan analisis hasil.</p>
+        </div>
+      </aside>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="config.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
