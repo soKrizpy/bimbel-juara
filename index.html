@@ -3,7 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Bimbel Juara CBT - Login</title>
+    <title>Bimbel Juara CBT</title>
+    <meta name="description" content="Bimbel Juara CBT" />
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -11,75 +12,144 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
       rel="stylesheet"
     />
+    <style>
+      :root {
+        color-scheme: dark;
+      }
+
+      html,
+      body {
+        min-height: 100%;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        background:
+          radial-gradient(circle at top left, rgba(56, 189, 248, 0.24), transparent 30%),
+          radial-gradient(circle at bottom right, rgba(34, 197, 94, 0.16), transparent 28%),
+          linear-gradient(135deg, #020617 0%, #0f172a 44%, #111827 100%);
+      }
+
+      .glass {
+        background: rgba(15, 23, 42, 0.68);
+        backdrop-filter: blur(22px);
+        -webkit-backdrop-filter: blur(22px);
+      }
+    </style>
     <link rel="stylesheet" href="style.css" />
   </head>
-  <body class="auth-page">
-    <div class="auth-backdrop"></div>
-    <main class="auth-shell">
-      <section class="auth-card">
-        <div class="auth-brand">
-          <div>
-            <p class="auth-kicker">Bimbel Juara</p>
-            <h1>CBT Bank Soal</h1>
+  <body class="text-white antialiased">
+    <main class="relative mx-auto flex min-h-screen max-w-7xl items-center px-6 py-8 lg:px-10">
+      <div class="absolute inset-0 -z-10 overflow-hidden">
+        <div class="absolute -left-24 top-8 h-72 w-72 rounded-full bg-cyan-400/20 blur-3xl"></div>
+        <div class="absolute right-0 top-1/2 h-96 w-96 rounded-full bg-emerald-400/10 blur-3xl"></div>
+      </div>
+
+      <div class="grid w-full gap-8 lg:grid-cols-[1.15fr_0.85fr]">
+        <section class="glass relative overflow-hidden rounded-[2rem] border border-white/10 p-8 shadow-2xl shadow-slate-950/40 md:p-12">
+          <div class="absolute right-0 top-0 h-40 w-40 translate-x-1/3 -translate-y-1/3 rounded-full bg-cyan-400/10 blur-3xl"></div>
+
+          <div class="flex items-center gap-3">
+            <div class="flex h-12 w-12 items-center justify-center rounded-2xl border border-cyan-400/20 bg-cyan-400/10 text-lg font-black text-cyan-300">
+              BJ
+            </div>
+            <div>
+              <p class="text-xs font-semibold uppercase tracking-[0.4em] text-slate-400">
+                Bimbel Juara
+              </p>
+              <h1 class="mt-1 text-3xl font-black tracking-tight text-white md:text-5xl">
+                CBT Bank Soal
+              </h1>
+            </div>
           </div>
-          <span class="auth-badge">Multi-role</span>
-        </div>
 
-        <p class="auth-copy">
-          Login untuk admin, superadmin, dan student. Sistem ini dibuat agar
-          pengelolaan paket soal, assignment, dan hasil ujian lebih rapi.
-        </p>
+          <div class="mt-10 flex flex-wrap gap-3">
+            <span class="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs font-semibold uppercase tracking-[0.25em] text-slate-200">
+              Multi-role
+            </span>
+            <span class="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs font-semibold uppercase tracking-[0.25em] text-slate-200">
+              Supabase
+            </span>
+            <span class="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs font-semibold uppercase tracking-[0.25em] text-slate-200">
+              Tailwind
+            </span>
+          </div>
 
-        <form id="login-form" class="auth-form">
-          <label>
-            <span>Email</span>
-            <input
-              type="email"
-              id="email"
-              placeholder="nama@siswa.com"
-              autocomplete="email"
-              required
-            />
-          </label>
+          <div class="mt-10 grid gap-4 sm:grid-cols-3">
+            <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+              <p class="text-xs uppercase tracking-[0.3em] text-slate-400">Akses</p>
+              <p class="mt-2 text-lg font-semibold text-white">Login</p>
+            </div>
+            <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+              <p class="text-xs uppercase tracking-[0.3em] text-slate-400">Role</p>
+              <p class="mt-2 text-lg font-semibold text-white">Admin</p>
+            </div>
+            <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+              <p class="text-xs uppercase tracking-[0.3em] text-slate-400">Mode</p>
+              <p class="mt-2 text-lg font-semibold text-white">CBT</p>
+            </div>
+          </div>
+        </section>
 
-          <label>
-            <span>Password</span>
-            <input
-              type="password"
-              id="password"
-              placeholder="Masukkan password"
-              autocomplete="current-password"
-              required
-            />
-          </label>
+        <section class="glass rounded-[2rem] border border-white/10 p-8 shadow-2xl shadow-slate-950/40 md:p-10">
+          <div class="mb-8">
+            <p class="text-xs font-semibold uppercase tracking-[0.4em] text-cyan-300/80">
+              Sign in
+            </p>
+            <h2 class="mt-3 text-2xl font-bold tracking-tight text-white md:text-3xl">
+              Masuk
+            </h2>
+          </div>
 
-          <button type="submit" class="btn btn-primary">
-            Masuk ke Dashboard
-          </button>
-        </form>
+          <form id="login-form" class="space-y-5">
+            <label class="block">
+              <span class="mb-2 block text-sm font-medium text-slate-300">Email</span>
+              <input
+                type="email"
+                id="email"
+                placeholder="nama@siswa.com"
+                autocomplete="email"
+                required
+                class="w-full rounded-2xl border border-white/10 bg-slate-950/60 px-4 py-3 text-white outline-none ring-0 transition placeholder:text-slate-500 focus:border-cyan-400/60 focus:bg-slate-950"
+              />
+            </label>
 
-        <div id="login-message" class="auth-message"></div>
+            <label class="block">
+              <span class="mb-2 block text-sm font-medium text-slate-300">Password</span>
+              <input
+                type="password"
+                id="password"
+                placeholder="••••••••"
+                autocomplete="current-password"
+                required
+                class="w-full rounded-2xl border border-white/10 bg-slate-950/60 px-4 py-3 text-white outline-none ring-0 transition placeholder:text-slate-500 focus:border-cyan-400/60 focus:bg-slate-950"
+              />
+            </label>
 
-        <div class="auth-note">
-          <strong>Catatan:</strong> username disimpan di profil, tetapi login
-          tetap menggunakan email/password Supabase Auth.
-        </div>
-      </section>
+            <button
+              type="submit"
+              class="group inline-flex w-full items-center justify-center rounded-2xl bg-gradient-to-r from-cyan-400 via-sky-400 to-emerald-400 px-4 py-3.5 text-sm font-bold text-slate-950 transition hover:brightness-110 focus:outline-none focus:ring-2 focus:ring-cyan-300/60"
+            >
+              <span class="tracking-wide">Masuk</span>
+              <span class="ml-2 transition group-hover:translate-x-0.5">→</span>
+            </button>
+          </form>
 
-      <aside class="auth-panel">
-        <div class="panel-card">
-          <h2>Alur kerja</h2>
-          <ol>
-            <li>Superadmin membuat admin dan student.</li>
-            <li>Admin membuat paket, soal, lalu assign ke siswa atau kelas.</li>
-            <li>Student login, mengerjakan soal, dan melihat skor + pembahasan.</li>
-          </ol>
-        </div>
-        <div class="panel-card panel-highlight">
-          <h2>Versi awal</h2>
-          <p>Fokus saat ini: pilihan ganda, CSV import, timer, dan analisis hasil.</p>
-        </div>
-      </aside>
+          <div id="login-message" class="mt-5 text-sm text-slate-300"></div>
+
+          <div class="mt-8 grid gap-3 sm:grid-cols-3">
+            <div class="rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-center text-xs font-semibold uppercase tracking-[0.24em] text-slate-300">
+              Auth
+            </div>
+            <div class="rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-center text-xs font-semibold uppercase tracking-[0.24em] text-slate-300">
+              RLS
+            </div>
+            <div class="rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-center text-xs font-semibold uppercase tracking-[0.24em] text-slate-300">
+              CSV
+            </div>
+          </div>
+        </section>
+      </div>
     </main>
 
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>

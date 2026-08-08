@@ -30,43 +30,43 @@ const ROLE_ORDER = ["student", "admin", "superadmin"];
 const VIEW_META = {
   overview: {
     title: "Ringkasan",
-    description: "Pantau kondisi bank soal, assignment aktif, dan progres ujian.",
+    description: "",
   },
   packages: {
     title: "Paket Soal",
-    description: "Buat paket, atur kategori, dan siapkan struktur ujian.",
+    description: "",
   },
   questions: {
     title: "Bank Soal",
-    description: "Kelola soal pilihan ganda untuk setiap paket yang tersedia.",
+    description: "",
   },
   assignments: {
     title: "Assignment",
-    description: "Tugaskan paket ke siswa atau kelas dengan batas waktu.",
+    description: "",
   },
   import: {
     title: "Import CSV",
-    description: "Upload soal massal dengan template CSV yang seragam.",
+    description: "",
   },
   users: {
     title: "Pengguna",
-    description: "Kelola profil, role, dan metadata pengguna.",
+    description: "",
   },
   superadmin: {
     title: "Superadmin Console",
-    description: "Pusat kendali global untuk role, settings, dan audit log.",
+    description: "",
   },
   exams: {
     title: "Ujian Saya",
-    description: "Lihat paket yang ditugaskan dan mulai mengerjakan.",
+    description: "",
   },
   results: {
     title: "Hasil & Analisis",
-    description: "Lihat hasil pengerjaan, skor, dan ringkasan kesalahan.",
+    description: "",
   },
   exam: {
     title: "Mengerjakan Soal",
-    description: "Kerjakan soal dengan timer aktif dan submit saat selesai.",
+    description: "",
   },
 };
 
@@ -398,7 +398,7 @@ function renderShell() {
   const content = $("content");
 
   if (pageTitle) pageTitle.textContent = meta.title;
-  if (pageDescription) pageDescription.textContent = meta.description;
+  if (pageDescription) pageDescription.textContent = meta.description || "";
   if (sidebarRole) sidebarRole.textContent = roleLabel(role);
   if (topbarRole) topbarRole.textContent = roleLabel(role);
   if (sidebarUser) sidebarUser.textContent = displayName;
@@ -495,8 +495,7 @@ function renderSetupWarnings() {
   return `
     <div class="section-card">
       <div class="help-box">
-        <strong>Perhatian setup Supabase</strong>
-        <p class="mini-note">Beberapa tabel atau kebijakan belum bisa dibaca dari browser. Jalankan SQL schema yang saya sediakan agar fitur lengkap aktif.</p>
+        <strong>Setup Supabase</strong>
         <ul class="mini-note">
           ${app.setupWarnings.map((warning) => `<li>${escapeHtml(warning)}</li>`).join("")}
         </ul>
@@ -515,10 +514,8 @@ function renderGlobalBanner() {
   return `
     <div class="section-card" style="margin-bottom:18px;">
       <div class="help-box">
-        <strong>${maintenanceMode ? "Maintenance mode aktif" : "Pengumuman sistem"}</strong>
-        <p class="mini-note">${escapeHtml(
-          announcement || "Sistem sedang dalam mode maintenance. Beberapa fitur mungkin dibatasi.",
-        )}</p>
+        <strong>${maintenanceMode ? "Maintenance" : "Pengumuman"}</strong>
+        <p class="mini-note">${escapeHtml(announcement || "Aktif")}</p>
       </div>
     </div>`;
 }
@@ -569,10 +566,7 @@ function renderOverview() {
   return `
     <section class="section-card">
       <div class="toolbar">
-        <div>
-          <p class="page-eyebrow">Akses cepat</p>
-          <h3 class="page-title" style="font-size:1.4rem;margin-top:0.2rem;">Apa yang ingin Anda lakukan hari ini?</h3>
-        </div>
+        <h3 class="page-title" style="font-size:1.4rem;margin-top:0.2rem;">Aksi</h3>
         <div class="toolbar-actions">${quickActionButtons()}</div>
       </div>
     </section>
@@ -580,7 +574,7 @@ function renderOverview() {
     <section class="section-grid grid-2">
       <div class="table-card">
         <div class="toolbar">
-          <h3>Ringkasan paket</h3>
+          <h3>Paket</h3>
           <button class="btn btn-ghost" data-go="packages">Kelola</button>
         </div>
         <div class="preview-list">
@@ -589,7 +583,7 @@ function renderOverview() {
       </div>
       <div class="table-card">
         <div class="toolbar">
-          <h3>Soal terbaru</h3>
+          <h3>Soal</h3>
           <button class="btn btn-ghost" data-go="questions">Kelola</button>
         </div>
         <div class="preview-list">
@@ -618,16 +612,13 @@ function renderOverview() {
       </div>
       <div class="table-card">
         <div class="toolbar">
-          <h3>Checklist implementasi</h3>
+          <h3>Status</h3>
         </div>
-        <div class="help-box">
-          <ul class="mini-note">
-            <li>Login multi-role</li>
-            <li>CRUD paket dan soal pilihan ganda</li>
-            <li>CSV import dengan template download</li>
-            <li>Assignment ke siswa atau kelas</li>
-            <li>Ujian dengan timer dan pembahasan</li>
-          </ul>
+        <div class="preview-list">
+          <div class="preview-item"><strong>Login</strong><div class="mini-note">OK</div></div>
+          <div class="preview-item"><strong>Bank soal</strong><div class="mini-note">OK</div></div>
+          <div class="preview-item"><strong>Assignment</strong><div class="mini-note">OK</div></div>
+          <div class="preview-item"><strong>Hasil</strong><div class="mini-note">OK</div></div>
         </div>
       </div>
     </section>
@@ -967,12 +958,8 @@ function renderImport() {
       <div class="section-card">
         <div class="toolbar">
           <div>
-            <p class="page-eyebrow">Template CSV</p>
-            <h3 class="page-title" style="font-size:1.2rem;margin-top:0.2rem;">Download template import</h3>
+            <h3 class="page-title" style="font-size:1.2rem;margin-top:0.2rem;">Template CSV</h3>
           </div>
-        </div>
-        <div class="help-box">
-          <p class="mini-note">Template di bawah memakai format: <code>package_title</code>, <code>category_name</code>, <code>question_text</code>, <code>option_a</code>, <code>option_b</code>, <code>option_c</code>, <code>option_d</code>, <code>correct_option</code>, <code>explanation</code>, <code>points</code>, <code>order_index</code>.</p>
         </div>
         <div class="toolbar-actions" style="margin-top:12px;">
           <button class="btn btn-primary" data-download-template>Download CSV template</button>
@@ -982,10 +969,7 @@ function renderImport() {
 
       <div class="section-card">
         <div class="toolbar">
-          <div>
-            <p class="page-eyebrow">Bulk import</p>
-            <h3 class="page-title" style="font-size:1.2rem;margin-top:0.2rem;">Upload soal dari CSV</h3>
-          </div>
+          <h3 class="page-title" style="font-size:1.2rem;margin-top:0.2rem;">Import CSV</h3>
         </div>
         <form id="import-form" class="form-grid">
           <label class="field">
@@ -1001,8 +985,7 @@ function renderImport() {
 
     <section class="table-card">
       <div class="toolbar">
-        <h3>Preview hasil import</h3>
-        <span class="mini-note">Row yang akan diproses akan muncul di sini</span>
+        <h3>Preview</h3>
       </div>
       <div id="import-preview" class="preview-list">
         <div class="empty-state">Belum ada file CSV yang dipilih.</div>
@@ -1038,16 +1021,6 @@ function renderUsers() {
     .join("");
 
   return `
-    <section class="section-card">
-      <div class="help-box">
-        <strong>Catatan penting</strong>
-        <p class="mini-note">
-          Pembuatan akun Auth baru paling aman dilakukan lewat dashboard Supabase, invitation flow, atau Edge Function yang memakai service role di server.
-          Di halaman ini kita mengelola profil dan role yang terkait dengan akun yang sudah ada.
-        </p>
-      </div>
-    </section>
-
     <section class="table-card">
       <div class="toolbar">
         <h3>Daftar pengguna</h3>
@@ -1105,8 +1078,7 @@ function renderSuperadmin() {
       <div class="section-card">
         <div class="toolbar">
           <div>
-            <p class="page-eyebrow">Global settings</p>
-            <h3 class="page-title" style="font-size:1.2rem;margin-top:0.2rem;">Kontrol penuh sistem</h3>
+            <h3 class="page-title" style="font-size:1.2rem;margin-top:0.2rem;">Settings</h3>
           </div>
         </div>
         <form id="superadmin-settings-form" class="form-grid cols-2" style="margin-top:16px;">
@@ -1143,12 +1115,8 @@ function renderSuperadmin() {
       <div class="section-card">
         <div class="toolbar">
           <div>
-            <p class="page-eyebrow">Profile shell</p>
-            <h3 class="page-title" style="font-size:1.2rem;margin-top:0.2rem;">Sinkronkan akun Auth yang sudah ada</h3>
+            <h3 class="page-title" style="font-size:1.2rem;margin-top:0.2rem;">Profile shell</h3>
           </div>
-        </div>
-        <div class="help-box">
-          <p class="mini-note">Isi <code>user id</code> dari Supabase Auth, lalu superadmin bisa menyiapkan role, username, dan kelas. Untuk membuat Auth user baru, gunakan Supabase Dashboard atau invite flow server-side.</p>
         </div>
         <form id="superadmin-profile-form" class="form-grid cols-2" style="margin-top:16px;">
           <label class="field">
@@ -1360,9 +1328,7 @@ function renderExam() {
       <div class="timer-badge">Timer: <span id="exam-timer">${escapeHtml(timerText)}</span></div>
       <div class="toolbar">
         <div>
-          <p class="page-eyebrow">Sedang mengerjakan</p>
           <h3 class="page-title" style="font-size:1.4rem;margin-top:0.2rem;">${escapeHtml(meta?.title || "Paket")}</h3>
-          <p class="page-description">${escapeHtml(meta?.description || "")}</p>
         </div>
         <div class="toolbar-actions">
           <button class="btn btn-primary" id="submit-exam-button">Kirim jawaban</button>
